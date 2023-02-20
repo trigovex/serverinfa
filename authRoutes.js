@@ -90,8 +90,7 @@ router.post('/AddAreaCharges',async (req,res)=>{
     await  user.save();
     res.send({"Status":"Done"});
   }
-  
-  console.log("hi")
+  console.log("hii")
 })
 
 
