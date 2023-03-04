@@ -173,6 +173,29 @@ const CharesByAreaSchema = new mongoose.Schema({
     },
 
 })
+const RestorentMenu = new mongoose.Schema({
+    AdminId:{
+        type:String,
+        required:true
+    },
+    MenuList:{
+        type:[String],
+        required:true
+    },
+    UpdatedData:{
+        type:String,
+        required:true
+    },
+    UpdatedTime:{
+        type:String,
+        required:true
+    },
+    Temp:{
+        type:[Object],
+
+    },
+
+})
 
 const UserSchema = new mongoose.Schema({
     email:{
@@ -485,3 +508,4 @@ mongoose.model('CouponSchema',CouponSchema);
 
 mongoose.model('CouponSchema',CouponSchema);
 mongoose.model('CharesByAreaSchema',CharesByAreaSchema);
+mongoose.model('RestorentMenu',RestorentMenu);

@@ -18,7 +18,56 @@ const Coupon = mongoose.model('CouponSchema');
 
 const AddAddress = mongoose.model('AddAddressSchema');
 
+const RestorentMenu = mongoose.model('RestorentMenu');
+
+
+
+
+
+router.post('/AddMenu',async(req,res) =>{
+  const {AdminId,MenuList,UpdatedData,UpdatedTime,Temp} = req.body;
+
+  try{
+    const menu = new RestorentMenu({AdminId,MenuList,UpdatedData,UpdatedTime,Temp});
+
+    await  menu.save();
+    res.send({"Status":"Added"});
+    
+    
+  }catch(err){Charges
+    return res.status(422).send(err.message)
+  }
+})
+
+
+
+router.get('/GetMenu', function(req, res, next) {
  
+  const Id = req.query.Id;
+  RestorentMenu.find({AdminId:Id},(err, docs) => {
+        if(docs.length>0) {
+          res.send(docs);
+        } else {
+          res.send({"Status":"No"});
+        }
+    });
+    
+  
+});
+
+
+router.put('/UpdateMenu',async (req,res)=>{
+  const {MenuList,UpdatedData,UpdatedTime,_id} = req.body
+
+  
+  RestorentMenu.findByIdAndUpdate(_id,{MenuList:MenuList,UpdatedData:UpdatedData,UpdatedTime:UpdatedTime},{useFindAndModify:false})
+  .then(data=>{
+    res.send({"Status":"Updated"});
+  })
+  .catch(err=>{
+    res.send({"Status":"error"});
+  })
+})
 
 router.get('/CheckCouponCode', function(req, res, next) {
  
