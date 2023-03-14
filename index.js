@@ -177,7 +177,7 @@ app.get('/sendOrderAsSms',async (req,res)=>{
     const orderid = req.query.OrderId ;
     const customername = req.query.CustomerName ;
     const phonenumber = req.query.PhoneNumber ;
-   var options = {authorization :'4XUer6PRhuiBjEGCH71wxNZILJMY3n8OW0TFakDb2dypqf9ztoeoUMdvbi0rj6PCEpI5DnJSwfGYkgca' , message : 'Customer:- '+customername+'\t Mobile No:-'+phonenumber+' with Order Id:-'+orderid ,  numbers : ['7995534388']} 
+   var options = {authorization :'4XUer6PRhuiBjEGCH71wxNZILJMY3n8OW0TFakDb2dypqf9ztoeoUMdvbi0rj6PCEpI5DnJSwfGYkgca' , message : 'Customer Name:- '+customername+'\t Mobile No:-'+phonenumber+' with Order Id:-'+orderid ,  numbers : ['7995534388']} 
     const response = await fast2sms.sendMessage(options)
  
      res.send(response)
